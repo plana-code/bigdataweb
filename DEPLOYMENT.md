@@ -1,4 +1,4 @@
-# Инструкция по деплою BigData Web App
+# Инструкция по деплою BigData Web App (Docker)
 
 ## Шаг 1: Настройка DNS (сделайте сейчас)
 
@@ -27,35 +27,81 @@ ssh root@88.99.245.52
 
 ---
 
-## Шаг 3: Загрузка и запуск деплой скрипта
+## Шаг 3: Установка Docker и Docker Compose
 
-После подключения к серверу выполните:
+Если Docker еще не установлен на сервере:
 
 ```bash
-# Скачать деплой скрипт
-wget https://raw.githubusercontent.com/plana-code/bigdataweb/main/deploy.sh
+# Установить Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
 
-# Сделать его исполняемым
-chmod +x deploy.sh
+# Установить Docker Compose
+apt-get update
+apt-get install -y docker-compose-plugin
 
-# Запустить
-./deploy.sh
+# Проверить установку
+docker --version
+docker compose version
 ```
-
-Скрипт автоматически:
-- Обновит систему
-- Установит Nginx, Git, Certbot
-- Настроит firewall
-- Склонирует репозиторий
-- Настроит Nginx
-- Установит SSL сертификат Let's Encrypt
-- Настроит автоматическое обновление SSL
 
 ---
 
-## Шаг 4: Проверка
+## Шаг 4: Клонирование репозитория
 
-После завершения скрипта откройте в браузере:
+```bash
+# Перейти в директорию для веб-приложений
+cd /var/www
+
+# Клонировать репозиторий
+git clone https://github.com/plana-code/bigdataweb.git
+
+# Перейти в папку проекта
+cd bigdataweb
+```
+
+---
+
+## Шаг 5: Запуск контейнера
+
+```bash
+# Запустить Docker контейнер
+docker compose up -d
+
+# Проверить статус
+docker compose ps
+```
+
+Docker автоматически:
+- Развернет nginx:alpine контейнер
+- Настроит gzip сжатие и кэширование
+- Применит security headers
+- Создаст volume для SSL сертификатов
+- Настроит health checks
+
+---
+
+## Шаг 6: Установка SSL сертификата
+
+```bash
+# Войти в контейнер
+docker compose exec web sh
+
+# Установить SSL сертификат Let's Encrypt
+certbot --nginx -d app.bigdatarf.ru --non-interactive --agree-tos --email your@email.com
+
+# Выйти из контейнера
+exit
+
+# Перезапустить контейнер для применения изменений
+docker compose restart
+```
+
+---
+
+## Шаг 7: Проверка
+
+После завершения откройте в браузере:
 
 **https://app.bigdatarf.ru**
 
@@ -76,6 +122,10 @@ cd /var/www/bigdataweb
 
 # Обновите код
 git pull origin main
+
+# Пересоберите и перезапустите контейнер
+docker compose down
+docker compose up -d --build
 
 # Готово! Изменения применятся сразу
 ```
@@ -102,24 +152,36 @@ git pull origin main
 ## Полезные команды на сервере
 
 ```bash
-# Проверить статус Nginx
-systemctl status nginx
+# Проверить статус контейнера
+docker compose ps
 
-# Перезапустить Nginx
-systemctl restart nginx
-
-# Проверить SSL сертификат
-certbot certificates
+# Просмотреть логи контейнера
+docker compose logs -f
 
 # Просмотреть логи Nginx
-tail -f /var/log/nginx/access.log
-tail -f /var/log/nginx/error.log
+docker compose exec web tail -f /var/log/nginx/access.log
+docker compose exec web tail -f /var/log/nginx/error.log
 
-# Проверить конфигурацию Nginx
-nginx -t
+# Войти в контейнер
+docker compose exec web sh
+
+# Перезапустить контейнер
+docker compose restart
+
+# Остановить контейнер
+docker compose down
+
+# Проверить SSL сертификат
+docker compose exec web certbot certificates
 
 # Обновить SSL сертификат вручную
-certbot renew
+docker compose exec web certbot renew
+
+# Проверить конфигурацию Nginx
+docker compose exec web nginx -t
+
+# Пересобрать образ после изменений
+docker compose up -d --build
 ```
 
 ---
@@ -130,10 +192,16 @@ certbot renew
 - Решение: Подождите 15-30 минут, проверьте через `nslookup app.bigdatarf.ru`
 
 **Проблема:** SSL сертификат не установился
-- Решение: Убедитесь, что DNS настроен правильно, повторите `certbot --nginx -d app.bigdatarf.ru`
+- Решение: Убедитесь, что DNS настроен правильно, войдите в контейнер: `docker compose exec web sh` и повторите `certbot --nginx -d app.bigdatarf.ru`
 
 **Проблема:** Сайт не открывается
-- Решение: Проверьте `systemctl status nginx` и `nginx -t`
+- Решение: Проверьте `docker compose ps` и `docker compose logs`
+
+**Проблема:** Контейнер не запускается
+- Решение: Проверьте логи `docker compose logs` и убедитесь, что порты 80 и 443 свободны
+
+**Проблема:** Изменения не применяются
+- Решение: Пересоберите образ: `docker compose down && docker compose up -d --build`
 
 ---
 
