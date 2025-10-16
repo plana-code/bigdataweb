@@ -1,0 +1,35 @@
+# Git
+.git
+.gitignore
+
+# Project memory
+AGENTS.md
+
+# Node modules
+node_modules
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Logs
+logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Deployment
+deploy.sh
+DEPLOYMENT.md
+
+# Docker
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# SSL (will be mounted as volume)
+ssl

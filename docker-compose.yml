@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: bigdataweb
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # SSL certificates persistence
+      - ./ssl/letsencrypt:/etc/letsencrypt
+      - ./ssl/lib:/var/lib/letsencrypt
+      # Nginx logs
+      - ./logs/nginx:/var/log/nginx
+    environment:
+      - DOMAIN=app.bigdatarf.ru
+    networks:
+      - bigdata-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  bigdata-network:
+    driver: bridge
