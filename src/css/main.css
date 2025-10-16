@@ -40,7 +40,7 @@
     align-items: center;
     justify-content: center;
     animation: binaryFade 4s ease-in-out infinite;
-    opacity: 0.03;
+    opacity: 0.15;
 }
 
 .hero__bg-number:nth-child(1) { animation-delay: 0s; }
@@ -61,10 +61,10 @@
 
 @keyframes binaryFade {
     0%, 100% {
-        opacity: 0.03;
+        opacity: 0.15;
     }
     50% {
-        opacity: 0.12;
+        opacity: 0.35;
     }
 }
 
