@@ -1,0 +1,99 @@
+/* Typography */
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    margin: 0;
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+}
+
+h5 {
+    font-size: var(--font-size-h5);
+}
+
+h6 {
+    font-size: var(--font-size-xl);
+}
+
+p {
+    margin: 0;
+}
+
+.text-xl {
+    font-size: var(--font-size-xl);
+}
+
+.text-lg {
+    font-size: var(--font-size-lg);
+}
+
+.text-md {
+    font-size: var(--font-size-md);
+}
+
+.text-sm {
+    font-size: var(--font-size-sm);
+}
+
+.text-xs {
+    font-size: var(--font-size-xs);
+}
+
+.text-primary {
+    color: var(--color-text-primary);
+}
+
+.text-secondary {
+    color: var(--color-text-secondary);
+}
+
+.text-disabled {
+    color: var(--color-text-disabled);
+}
+
+.text-accent {
+    color: var(--color-primary);
+}
+
+.text-white {
+    color: var(--color-white);
+}
+
+.font-normal {
+    font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+    font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+    font-weight: var(--font-weight-bold);
+}

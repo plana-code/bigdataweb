@@ -1,0 +1,27 @@
+# Проектная память (не коммитим)
+AGENTS.md
+
+# Node modules
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

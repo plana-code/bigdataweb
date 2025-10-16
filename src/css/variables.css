@@ -1,0 +1,113 @@
+/* CSS Variables - Design System */
+:root {
+    /* Colors */
+    --color-primary: #FF9B7F;
+    --color-primary-light: #FFB89E;
+    --color-primary-hover: #FF8A66;
+
+    --color-black: #000000;
+    --color-gray-dark: #4A4A4A;
+    --color-gray: #9E9E9E;
+    --color-gray-light: #E0E0E0;
+    --color-white: #FFFFFF;
+
+    --color-text-primary: var(--color-black);
+    --color-text-secondary: var(--color-gray-dark);
+    --color-text-disabled: var(--color-gray);
+
+    --color-bg-primary: var(--color-white);
+    --color-bg-accent: var(--color-primary);
+    --color-bg-light: #FFF5F2;
+
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+    --font-size-h1: 72px;
+    --font-size-h2: 64px;
+    --font-size-h3: 56px;
+    --font-size-h4: 40px;
+    --font-size-h5: 32px;
+
+    --font-size-xl: 24px;
+    --font-size-lg: 18px;
+    --font-size-md: 16px;
+    --font-size-sm: 14px;
+    --font-size-xs: 12px;
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    --spacing-4xl: 96px;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+    --transition-slow: 350ms ease;
+
+    /* Layout */
+    --container-max-width: 1200px;
+    --container-padding: var(--spacing-lg);
+
+    /* Z-index */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+}
+
+/* Mobile breakpoints */
+@media (max-width: 768px) {
+    :root {
+        --font-size-h1: 48px;
+        --font-size-h2: 40px;
+        --font-size-h3: 32px;
+        --font-size-h4: 28px;
+        --font-size-h5: 24px;
+
+        --spacing-2xl: 32px;
+        --spacing-3xl: 48px;
+        --spacing-4xl: 64px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-h1: 36px;
+        --font-size-h2: 32px;
+        --font-size-h3: 28px;
+        --font-size-h4: 24px;
+        --font-size-h5: 20px;
+
+        --container-padding: var(--spacing-md);
+    }
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#FFFFFF">
+    <title>БигДата - Автоматизация бизнес-процессов</title>
+
+    <!-- Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="src/css/reset.css">
+    <link rel="stylesheet" href="src/css/variables.css">
+    <link rel="stylesheet" href="src/css/typography.css">
+    <link rel="stylesheet" href="src/css/components.css">
+    <link rel="stylesheet" href="src/css/main.css">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav__logo">БигДата</div>
+                <button class="nav__burger" id="menuToggle" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav__menu" id="navMenu">
+                    <li><a href="#about" class="nav__link">О нас</a></li>
+                    <li><a href="#cases" class="nav__link">Кейсы</a></li>
+                    <li><a href="#services" class="nav__link">Услуги</a></li>
+                    <li><a href="#blog" class="nav__link">Блог</a></li>
+                    <li><a href="#contacts" class="nav__link">Контакты</a></li>
+                </ul>
+                <button class="btn btn--primary btn--small nav__cta">Обсудить проект</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero__background" id="binaryBackground">
+                    <span class="hero__bg-number">1</span>
+                    <span class="hero__bg-number">0</span>
+                    <span class="hero__bg-number">1</span>
+                    <span class="hero__bg-number">0</span>
+                    <span class="hero__bg-number">1</span>
+                    <span class="hero__bg-number">0</span>
+                    <span class="hero__bg-number">1</span>
+                    <span class="hero__bg-number">0</span>
+                    <span class="hero__bg-number">1</span>
+                    <span class="hero__bg-number">0</span>
+                    <span class="hero__bg-number">1</span>
+                    <span class="hero__bg-number">0</span>
+                    <span class="hero__bg-number">1</span>
+                    <span class="hero__bg-number">0</span>
+                    <span class="hero__bg-number">1</span>
+                </div>
+                <div class="hero__content">
+                    <h1 class="hero__title">
+                        Автоматизация бизнес-процессов на базе локальных ИИ-моделей
+                    </h1>
+                    <p class="hero__description">
+                        Сокращаем рутину, ускоряем работу команд и увеличиваем ROI.
+                        Запускаем пилотные проекты за 30-45 дней с прозрачным KPI.
+                    </p>
+                    <button class="btn btn--primary btn--large" id="ctaButton">
+                        Узнать больше
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cases Section -->
+        <section class="cases" id="cases">
+            <div class="container">
+                <h2 class="section__title">Наши кейсы</h2>
+                <div class="scroll-stack">
+                    <div class="scroll-stack__item">
+                        <div class="case-card">
+                            <h3 class="case-card__title">Автоматизация службы поддержки</h3>
+                            <p class="case-card__description">
+                                Внедрили ИИ-ассистента для крупного e-commerce проекта.
+                                Сократили время обработки запросов на 65% и повысили
+                                удовлетворённость клиентов на 40%.
+                            </p>
+                            <div class="case-card__metrics">
+                                <div class="metric">
+                                    <span class="metric__value">65%</span>
+                                    <span class="metric__label">Экономия времени</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric__value">40%</span>
+                                    <span class="metric__label">Рост удовлетворённости</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-stack__item">
+                        <div class="case-card">
+                            <h3 class="case-card__title">Анализ документов для юридической компании</h3>
+                            <p class="case-card__description">
+                                Разработали систему автоматической обработки договоров
+                                и юридических документов. Скорость обработки увеличилась
+                                в 10 раз, точность распознавания — 98%.
+                            </p>
+                            <div class="case-card__metrics">
+                                <div class="metric">
+                                    <span class="metric__value">10x</span>
+                                    <span class="metric__label">Ускорение обработки</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric__value">98%</span>
+                                    <span class="metric__label">Точность</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-stack__item">
+                        <div class="case-card">
+                            <h3 class="case-card__title">Прогнозирование продаж для ритейла</h3>
+                            <p class="case-card__description">
+                                Создали систему прогнозирования спроса на основе
+                                локальных моделей машинного обучения. Точность прогнозов
+                                достигла 92%, оптимизация складских запасов — 30%.
+                            </p>
+                            <div class="case-card__metrics">
+                                <div class="metric">
+                                    <span class="metric__value">92%</span>
+                                    <span class="metric__label">Точность прогнозов</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric__value">30%</span>
+                                    <span class="metric__label">Оптимизация запасов</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-stack__item">
+                        <div class="case-card">
+                            <h3 class="case-card__title">Умный HR-ассистент</h3>
+                            <p class="case-card__description">
+                                Автоматизировали скрининг резюме и первичное собеседование
+                                для IT-компании. Сократили время найма на 45%, увеличили
+                                качество подбора кандидатов на 35%.
+                            </p>
+                            <div class="case-card__metrics">
+                                <div class="metric">
+                                    <span class="metric__value">45%</span>
+                                    <span class="metric__label">Сокращение времени найма</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric__value">35%</span>
+                                    <span class="metric__label">Качество подбора</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <h2 class="section__title">Наши услуги</h2>
+                <div class="services__grid">
+                    <div class="card">
+                        <h3 class="card__title">ИИ-агенты для поддержки клиентов</h3>
+                        <p class="card__text">
+                            Оптимизируем работу службы поддержки с помощью умных
+                            ИИ-агентов. Автоматизируем рутинные процессы,
+                            ускоряем обработку запросов и повышаем
+                            качество обслуживания.
+                        </p>
+                        <a href="#" class="card__link">Узнать больше</a>
+                    </div>
+
+                    <div class="card card--accent">
+                        <h3 class="card__title">ИИ-агенты для поддержки клиентов</h3>
+                        <p class="card__text">
+                            Оптимизируем работу службы поддержки с помощью умных
+                            ИИ-агентов. Автоматизируем рутинные процессы,
+                            ускоряем обработку запросов и повышаем
+                            качество обслуживания.
+                        </p>
+                        <a href="#" class="card__link">Узнать больше</a>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card__title">ИИ-агенты для поддержки клиентов</h3>
+                        <p class="card__text">
+                            Оптимизируем работу службы поддержки с помощью умных
+                            ИИ-агентов. Автоматизируем рутинные процессы,
+                            ускоряем обработку запросов и повышаем
+                            качество обслуживания.
+                        </p>
+                        <a href="#" class="card__link">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section__title">О нас</h2>
+                <p class="section__description">
+                    Мы специализируемся на внедрении локальных ИИ-решений для бизнеса.
+                    Наша команда помогает компаниям автоматизировать процессы и повысить эффективность.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contacts">
+            <div class="container">
+                <h2 class="section__title">Обсудим ваш проект?</h2>
+                <button class="btn btn--primary btn--large" id="contactButton">
+                    Связаться с нами
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">&copy; 2025 БигДата. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="src/js/telegram.js"></script>
+    <script src="src/js/main.js"></script>
+</body>
+</html>
